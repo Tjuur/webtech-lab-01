@@ -1,0 +1,149 @@
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.kira {
+    width: 75%;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header {
+    background-color: #1e1e1e;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #333333;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+th {
+    background-color: #1e1e1e;
+    font-weight: bold;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-grid article {
+    background-color: #1e1e1e;
+    border: 1px solid #333333;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+a {
+    color: #8ab4f8;
+
+}
+
+a:hover {
+    color: #8ab4ff;
+}
+
+a:focus {
+    outline: 2px solid #8ab4f8;
+    outline-offset: 2px;
+}
+
+input,
+textarea {
+    background-color: #242424;
+    color: #ffffff;
+    border: 1px solid #333333;
+    padding: 8px;
+
+}
+
+a:focus,
+input:focus,
+textarea:focus,
+button:focus { 
+    outline: 2px solid #8ab4f8;
+    outline-offset: 2px;
+}
+
+#name,
+#email {
+    max-width: 350px;
+}
+
+#message {
+    max-width: 500px;
+}
+
+button {
+    background-color: #242424;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: fit-content;
+}
+
+footer {
+    background-color: #1e1e1e;
+    padding: 20px 0;
+    text-align: center;
+}
