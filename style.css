@@ -1,3 +1,5 @@
+/* main css file for my page */
+
 * {
     box-sizing: border-box;
 }
@@ -99,11 +101,6 @@ a {
 
 a:hover {
     color: #8ab4ff;
-}
-
-a:focus {
-    outline: 2px solid #8ab4f8;
-    outline-offset: 2px;
 }
 
 input,
