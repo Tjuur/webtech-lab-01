@@ -96,7 +96,6 @@ th {
 
 a {
     color: #8ab4f8;
-
 }
 
 a:hover {
@@ -104,18 +103,19 @@ a:hover {
 }
 
 input,
-textarea {
+textarea,
+select {
     background-color: #242424;
     color: #ffffff;
     border: 1px solid #333333;
     padding: 8px;
-
 }
 
 a:focus,
 input:focus,
 textarea:focus,
-button:focus { 
+select:focus,
+button:focus {
     outline: 2px solid #8ab4f8;
     outline-offset: 2px;
 }
@@ -144,6 +144,9 @@ footer {
     padding: 20px 0;
     text-align: center;
 }
+
+
+/* Light mode */
 
 .lightMode {
     background-color: #ffffff;
@@ -184,4 +187,26 @@ footer {
 
 .lightMode a:hover {
     color: #003f8c;
+}
+
+
+/* Recommendation section */
+
+#recommendationList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+#recommendationList article {
+    background-color: #1e1e1e;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 10px;
+}
+
+.lightMode #recommendationList article {
+    background-color: #f5f5f5;
+    border-color: #cccccc;
 }
