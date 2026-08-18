@@ -158,7 +158,7 @@ recommendationFilter.addEventListener("input", function () {
 });
 
 
-//Adding new recommendations or whatever
+//Adding new recommendations
 
 const recommendationForm =
     document.querySelector("#recommendationForm");
@@ -181,8 +181,6 @@ const recommendationArtistError =
 const recommendationGenreError =
     document.querySelector("#recommendationGenreError");
 
-
-//Removes recommendation errors once fixed
 recommendationName.addEventListener("input", function () {
     if (recommendationName.value.trim() !== "") {
         recommendationNameError.textContent = "";
@@ -248,7 +246,7 @@ recommendationForm.addEventListener("submit", function (event) {
 });
 
 
-//Contact form
+//Contact form section
 
 const contactForm =
     document.querySelector("#contactForm");
@@ -337,7 +335,7 @@ contactForm.addEventListener("submit", function (event) {
 });
 
 
-//Toggle button, PSA this did NOT take 2 hrs...
+//Toggle button section
 const themeToggle =
     document.querySelector("#themeToggle");
 
