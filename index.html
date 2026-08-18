@@ -1,3 +1,5 @@
+<!-- main html file for my page -->
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -6,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cristóbal Toro</title>
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
 
     </head>
     <body>
@@ -22,6 +24,10 @@
                 <li><a href="#links">Links</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button id="themeToggle" type="button" aria-pressed="false">
+                Light mode
+            </button>
+            </nav>
         </nav>
         <main>        
             <section id="about"> 
@@ -99,19 +105,71 @@
                 </ul>
             </section>
 
+            <section id="recommendations"> 
+                <h2>Music recommendations</h2>
+
+                <p>A small list of music recommendations, feel free to add yours!</p>
+
+                <label for="recommendationFilter">Filter :</label>
+                <input type="text" id="recommendationFilter" placeholder="Search recommendations...">
+
+                <div id="recommendationList"></div>
+
+                <h3>Add a recommendation</h3>
+
+                <form id="recommendationForm">
+                    <lavel for="recommendationName">Song</label>
+                    <input type="text" id="recommendationName" placeholder="Enter song name">
+
+                    <p id="recommendationNameError"></p>
+
+                    <label for="recommendationArtistName">Artist</label>
+                    <input type="text" id="recommendationArtistName" placeholder="Enter artist name">
+                    
+                    <p id="recommendationArtistError"></p>
+                    
+                    <label for="recommendationGenre">Genre</label>
+                    <select id="recommendationGenre">
+                        <option value="" disabled selected>Select a genre...</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Pop">Pop</option>
+                        <option value="Electronic">Electronic</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Jazz">Jazz</option>
+                        <option value="Country">Country</option>
+                        <option value="Hip-Hop">Hip-Hop</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <p id="recommendationGenreError"></p>
+
+                    <button type="submit">Add Recommendation</button>
+                </form>
+
+            </section>
+
             <section id="contact">
                 <h2>Contact</h2>
-                <form>
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name">
 
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
+                <form id="contactForm" novalidate>
+                    <label for="contactName">Name</label>
+                    <input type="text" id="contactName" name="name" aria-describedby="nameError">
 
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message"></textarea>
+                    <p id="nameError"></p>
+
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" name="email" aria-describedby="emailError">
+                    
+                    <p id="emailError"></p>
+
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" name="message" aria-describedby="messageError"></textarea>
+
+                    <p id="messageError"></p>
 
                     <button type="submit">Send Message</button>
+
+                    <p id="contactSuccess"></p>
                 </form>
             </section>
 
