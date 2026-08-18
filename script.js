@@ -1,5 +1,6 @@
 //General scripts for my page
 
+//list of recommendations
 const recommendations = [
     {
         song:"Talk of the Town",
@@ -33,6 +34,7 @@ const recommendations = [
     }
 ];
 
+//Functions to make said recommendations appear
 const recommendationList =
     document.querySelector("#recommendationList");
 
@@ -53,7 +55,40 @@ function createRecommendation(recommendation){
     return article;
 }
 
-recommendations.forEach(function (recommendation) {
-    const item = createRecommendation(recommendation);
-    recommendationList.append(item);
+//Filter for the recommendations
+const recommendationFilter = 
+    document.querySelector("#recommendationFilter");
+
+function renderRecommendations(items) {
+    recommendationList.textContent = "";
+    
+    if (items.length === 0) {
+    const message = document.createElement("p");
+    message.textContent = "No recommendations matching your filter.";
+    recommendationList.append(message);
+    return;
+    }
+
+    items.forEach(function (recommendation) { 
+        const item = createRecommendation(recommendation);
+        recommendationList.append(item);
+    });
+}
+
+renderRecommendations(recommendations);
+
+recommendationFilter.addEventListener("input", function (){
+    const searchText = recommendationFilter.value.toLocaleLowerCase();
+
+    const filteredRecommendations = recommendations.filter(
+        function (recommendation) {
+            return(
+                recommendation.song.toLocaleLowerCase().includes(searchText) ||
+                recommendation.artist.toLocaleLowerCase().includes(searchText) ||
+                recommendation.genre.toLocaleLowerCase().includes(searchText)                
+            );
+        }
+    );
+
+    renderRecommendations(filteredRecommendations);
 });
