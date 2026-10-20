@@ -1,6 +1,6 @@
-//General scripts for my page
+// General scripts for my page
 
-//list of recommendations
+// List of recommendations
 const recommendations = [
     {
         song: "Talk of the Town",
@@ -41,13 +41,11 @@ const recommendations = [
 ];
 
 
-//Functions to make said recommendations appear
+// Music recommendations
 
 const recommendationList =
     document.querySelector("#recommendationList");
 
-
-//Updates the favorite button depending on favorite status
 function updateFavoriteButton(button, recommendation) {
     button.textContent =
         recommendation.favorite ? "★" : "☆";
@@ -64,7 +62,6 @@ function updateFavoriteButton(button, recommendation) {
             : "Mark as favorite"
     );
 }
-
 
 function createRecommendation(recommendation) {
     const article = document.createElement("article");
@@ -100,11 +97,9 @@ recommendationList.addEventListener("click", function (event) {
         const button = event.target;
         const article = button.closest("article");
 
-        const recommendation = recommendations.find(
-            function (item) {
-                return item.song === article.dataset.song;
-            }
-        );
+        const recommendation = recommendations.find(function (item) {
+            return item.song === article.dataset.song;
+        });
 
         recommendation.favorite = !recommendation.favorite;
 
@@ -113,7 +108,8 @@ recommendationList.addEventListener("click", function (event) {
 });
 
 
-//Filter section
+// Filter recommendations
+
 const recommendationFilter =
     document.querySelector("#recommendationFilter");
 
@@ -134,6 +130,7 @@ function renderRecommendations(items) {
         recommendationList.append(item);
     });
 }
+
 function applyRecommendationFilter() {
     const searchText =
         recommendationFilter.value.toLowerCase();
@@ -158,7 +155,7 @@ recommendationFilter.addEventListener("input", function () {
 });
 
 
-//Adding new recommendations
+// Add new recommendations
 
 const recommendationForm =
     document.querySelector("#recommendationForm");
@@ -198,7 +195,6 @@ recommendationGenre.addEventListener("change", function () {
         recommendationGenreError.textContent = "";
     }
 });
-
 
 recommendationForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -246,7 +242,7 @@ recommendationForm.addEventListener("submit", function (event) {
 });
 
 
-//Contact form section
+// Contact form
 
 const contactForm =
     document.querySelector("#contactForm");
@@ -271,7 +267,6 @@ const messageError =
 
 const contactSuccess =
     document.querySelector("#contactSuccess");
-
 
 contactName.addEventListener("input", function () {
     if (contactName.value.trim() !== "") {
@@ -311,7 +306,9 @@ contactForm.addEventListener("submit", function (event) {
     }
 
     if (contactEmail.value.trim() === "") {
-        emailError.textContent = "Please enter your email.";
+        nameError.textContent = "";
+        emailError.textContent =
+            "Please enter your email.";
         formIsValid = false;
     } else if (
         !contactEmail.value.includes("@") ||
@@ -329,13 +326,13 @@ contactForm.addEventListener("submit", function (event) {
 
     if (formIsValid) {
         contactSuccess.textContent = "Your message has been sent!";
-
         contactForm.reset();
     }
 });
 
 
-//Toggle button section
+// Light/dark mode
+
 const themeToggle =
     document.querySelector("#themeToggle");
 
@@ -353,3 +350,127 @@ themeToggle.addEventListener("click", function () {
     themeToggle.textContent =
         isLight ? "Dark mode" : "Light mode";
 });
+
+// Wheelhouse API integration — Lab 10
+
+const WHEELHOUSE_API_URL = "http://localhost:3000/api/v1/services";
+
+const servicesStatus = document.querySelector("#servicesStatus");
+const servicesTable = document.querySelector("#servicesTable");
+const servicesBody = document.querySelector("#servicesBody");
+
+const serviceLookupForm = document.querySelector("#serviceLookupForm");
+const serviceIdInput = document.querySelector("#serviceId");
+const serviceLookupStatus = document.querySelector("#serviceLookupStatus");
+const serviceLookupResult = document.querySelector("#serviceLookupResult");
+
+const wheelhouseCurrency = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+});
+
+function formatServicePrice(price) {
+    return wheelhouseCurrency.format(Number(price));
+}
+
+async function fetchWheelhouseJSON(url) {
+    const response = await fetch(url);
+
+    let data;
+
+    try {
+        data = await response.json();
+    } catch {
+        throw new Error("The API returned an unreadable response.");
+    }
+
+    if (!response.ok) {
+        if (data && Array.isArray(data.errors)) {
+            throw new Error(data.errors.join(", "));
+        }
+
+        throw new Error(`API request failed (${response.status}).`);
+    }
+
+    return data;
+}
+
+function createServiceRow(service) {
+    const row = document.createElement("tr");
+
+    const nameCell = document.createElement("td");
+    nameCell.textContent = service.name;
+
+    const priceCell = document.createElement("td");
+    priceCell.textContent = formatServicePrice(service.price);
+
+    row.append(nameCell, priceCell);
+
+    return row;
+}
+
+async function loadWheelhouseServices() {
+    servicesStatus.textContent = "Loading services...";
+    servicesTable.hidden = true;
+    servicesBody.textContent = "";
+
+    try {
+        const services = await fetchWheelhouseJSON(WHEELHOUSE_API_URL);
+
+        if (!Array.isArray(services)) {
+            throw new Error("The API returned an unexpected service list.");
+        }
+
+        services.forEach(function (service) {
+            servicesBody.append(createServiceRow(service));
+        });
+
+        if (services.length === 0) {
+            servicesStatus.textContent = "No services are currently available.";
+            return;
+        }
+
+        servicesTable.hidden = false;
+        servicesStatus.textContent = "";
+    } catch (error) {
+        servicesStatus.textContent =
+            `Unable to load services: ${error.message}`;
+    }
+}
+
+serviceLookupForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const serviceId = serviceIdInput.value.trim();
+
+    serviceLookupStatus.textContent = "Looking up service...";
+    serviceLookupResult.textContent = "";
+
+    try {
+        const service = await fetchWheelhouseJSON(
+            `${WHEELHOUSE_API_URL}/${encodeURIComponent(serviceId)}`
+        );
+
+        const heading = document.createElement("h4");
+        heading.textContent = service.name;
+
+        const price = document.createElement("p");
+        price.textContent =
+            `Price: ${formatServicePrice(service.price)}`;
+
+        const repairCount = document.createElement("p");
+        repairCount.textContent =
+            `Number of repairs using this service: ${service.repair_count}`;
+
+        serviceLookupResult.append(heading, price, repairCount);
+
+        serviceLookupStatus.textContent = "";
+    } catch (error) {
+        serviceLookupStatus.textContent =
+            `Unable to find service: ${error.message}`;
+    }
+});
+
+loadWheelhouseServices();

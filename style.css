@@ -1,4 +1,4 @@
-/* main css file for my page */
+/* Main CSS file for my page */
 
 * {
     box-sizing: border-box;
@@ -33,7 +33,6 @@ nav ul {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-
     list-style: none;
     margin: 0;
     padding: 0;
@@ -208,5 +207,58 @@ footer {
 
 .lightMode #recommendationList article {
     background-color: #f5f5f5;
+    border-color: #cccccc;
+}
+
+
+/* Wheelhouse API section  (Lab 10) */ 
+
+#wheelhouse {
+    padding: 20px;
+    border: 1px solid #333333;
+    border-radius: 8px;
+}
+
+#wheelhouse h2 {
+    margin-top: 0;
+}
+
+#servicesTable {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#servicesTable[hidden] {
+    display: none;
+}
+
+#serviceLookupForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#serviceId {
+    max-width: 200px;
+}
+
+#servicesStatus,
+#serviceLookupStatus {
+    margin-top: 15px;
+}
+
+#serviceLookupResult {
+    margin-top: 15px;
+}
+
+#serviceLookupResult h4 {
+    margin-bottom: 5px;
+}
+
+#serviceLookupResult p {
+    margin: 5px 0;
+}
+
+.lightMode #wheelhouse {
     border-color: #cccccc;
 }

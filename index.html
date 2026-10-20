@@ -1,184 +1,268 @@
-<!-- main html file for my page -->
+<!-- Main HTML file for my page -->
 
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cristóbal Toro</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
 
-    </head>
-    <body>
-        <header>
-            <h1>Cristóbal Toro, Computer Science Engineering, admitted in 2022</h1>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristóbal Toro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
 
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#links">Links</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button id="themeToggle" type="button" aria-pressed="false">
-                Light mode
-            </button>
-            </nav>
-        </nav>
-        <main>        
-            <section id="about"> 
-                <h2>Quick description about myself</h2>
+<body>
+    <header>
+        <h1>Cristóbal Toro, Computer Science Engineering, admitted in 2022</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#wheelhouse">Wheelhouse</a></li>
+            <li><a href="#links">Links</a></li>
+            <li><a href="#recommendations">Music</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button id="themeToggle" type="button" aria-pressed="false">
+            Light mode
+        </button>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>Quick description about myself</h2>
+
+            <p>
+                Hello and welcome to my page! I'm a student at Universidad de los Andes,
+                currently coursing through Web Technology. I'm passionate about music,
+                playing games and programming.
+                I've got a loving girlfriend and a lovely cat (slightly dangerous),
+                both of whom I adore.
+            </p>
+
+            <aside>
                 <p>
-                    Hello and welcome to my page! I'm a student at Universidad de los Andes, 
-                    currently coursing through Web Technology. I'm passionate about music, playing games and programming.
-                    I've got a loving girlfriend and a lovely cat (slightly dangerous), both of whom I adore.
+                    Fun fact: Kira, my cat, is responsible for one of the three scars I've got.
+                    Cats and hair dryers don't mix well...
                 </p>
+            </aside>
 
-                <aside>
+            <figure>
+                <img class="kira"
+                     src="images/kira.jpeg"
+                     alt="Kira posing for the camera.">
+
+                <figcaption>
+                    Kira posing for the camera after destroying my headphones.
+                </figcaption>
+            </figure>
+        </section>
+
+        <section id="skills">
+            <h2>My skillset</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Languages</th>
+                        <th>Tools</th>
+                        <th>Operating Systems</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Python, JS, C, C++</td>
+                        <td>Visual Studio Code, Git, MS Azure, MS Power Automate</td>
+                        <td>Windows, Linux, macOS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="projects">
+            <h2>My projects</h2>
+
+            <div class="project-grid">
+                <article>
+                    <h3>Project 1: Invoice Automation to Excel</h3>
                     <p>
-                        Fun fact: Kira, my cat, is responsible for one of the three scars I've got. Cats and hair dryers don't mix well...
+                        I used MS Power Automate to create a workflow that automatically
+                        detects invoices and sends them to an AI agent that uses OCR
+                        to extract information, then it populates a spreadsheet
+                        with said information.
                     </p>
-                </aside>
-                
-                <figure>
-                    <img class="kira" 
-                    src="images/kira.jpeg" 
-                    alt="Kira posing for the camera.">
+                </article>
 
-                    <figcaption>Kira posing for the camera after destroying my headphones.</figcaption>
-                </figure>
-            </section>
+                <article>
+                    <h3>Project 2: Text-Based Adventure Game</h3>
+                    <p>
+                        I developed a short text-based RPG game in Python,
+                        it was a simple turn-based game, similar to old school
+                        Final Fantasy games. It was a project I made to learn
+                        Python while having fun, currently I'm remaking it
+                        to use OOP so it scales better.
+                    </p>
+                </article>
+            </div>
+        </section>
 
-            <section id="skills">
-                <h2>My skillset</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Languages</th>
-                                <th>Tools</th>
-                                <th>Operating Systems</th>
-                            </tr>
-                        </thead>
+        <!-- Wheelhouse API section -->
 
-                        <tbody> 
-                            <tr>
-                                <td>Python, JS, C, C++</td>
-                                <td>Visual Studio Code, Git, MS Azure, MS Power Automate</td>
-                                <td>Windows, Linux, macOS</td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
+        <section id="wheelhouse">
+            <h2>Wheelhouse Bike Repair — Price List</h2>
 
-            <section id="projects">
-                <h2>My projects</h2>
+            <p>
+                Here you can browse the services offered by Wheelhouse,
+                a fictional bike repair shop developed using Ruby on Rails.
+            </p>
 
-                <div class="project-grid">
-                    <article>
-                        <h3>Project 1: Invoice Automation to Excel</h3>
-                        <p>
-                            I used MS Power Automate to create a workflow that automatically detects invoices and sends them to an AI agent that uses OCR to extract information, 
-                            then it populates a spreadsheet with said information.
-                        </p>
-                    </article>
+            <p>
+                Prices are retrieved from the Wheelhouse API.
+                The Rails server must be running locally on port 3000.
+            </p>
 
-                    <article>
-                        <h3>Project 2: Text-Based Adventure Game</h3>
-                        <p>
-                            I developed a short text-based RPG game in Python, it was a simple turn-based game, 
-                            similar to old school Final Fantasy games. It was a project I made to learn Python while having fun, currently I'm remaking it to use OOP so it scales better.
-                        </p>
-                    </article>
-                </div>
-            </section>
+            <p id="servicesStatus" role="status">Loading services...</p>
 
-            <section id="links">
-                <h2>Links</h2>
-                <ul>
-                    <li><a href="https://github.com/Tjuur"> My GitHub Account</a></li>
-                    <li><a href="https://github.com/Tjuur/webtech-lab-01">This Page's Repository</a></li>
-                    <li><a href="https://exercism.org/">Cool Website to Practice Coding</a></li>
-                </ul>
-            </section>
+            <table id="servicesTable" hidden>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
 
-            <section id="recommendations"> 
-                <h2>Music recommendations</h2>
+                <tbody id="servicesBody">
+                </tbody>
+            </table>
 
-                <p>A small list of music recommendations, feel free to add yours!</p>
+            <h3>Find a Service</h3>
 
-                <label for="recommendationFilter">Filter :</label>
-                <input type="text" id="recommendationFilter" placeholder="Search recommendations...">
+            <p>
+                Enter a service ID to see its details, including
+                how many repairs have used that service.
+            </p>
 
-                <div id="recommendationList"></div>
+            <form id="serviceLookupForm">
+                <label for="serviceId">Service ID</label>
 
-                <h3>Add a recommendation</h3>
+                <input
+                    type="number"
+                    id="serviceId"
+                    min="1"
+                    step="1"
+                    required
+                >
 
-                <form id="recommendationForm">
-                    <lavel for="recommendationName">Song</label>
-                    <input type="text" id="recommendationName" placeholder="Enter song name">
+                <button type="submit">Find Service</button>
+            </form>
 
-                    <p id="recommendationNameError"></p>
+            <p id="serviceLookupStatus" role="status"></p>
 
-                    <label for="recommendationArtistName">Artist</label>
-                    <input type="text" id="recommendationArtistName" placeholder="Enter artist name">
-                    
-                    <p id="recommendationArtistError"></p>
-                    
-                    <label for="recommendationGenre">Genre</label>
-                    <select id="recommendationGenre">
-                        <option value="" disabled selected>Select a genre...</option>
-                        <option value="Rock">Rock</option>
-                        <option value="Pop">Pop</option>
-                        <option value="Electronic">Electronic</option>
-                        <option value="Metal">Metal</option>
-                        <option value="Jazz">Jazz</option>
-                        <option value="Country">Country</option>
-                        <option value="Hip-Hop">Hip-Hop</option>
-                        <option value="Other">Other</option>
-                    </select>
+            <div id="serviceLookupResult"></div>
+        </section>
 
-                    <p id="recommendationGenreError"></p>
+        <section id="links">
+            <h2>Links</h2>
 
-                    <button type="submit">Add Recommendation</button>
-                </form>
+            <ul>
+                <li><a href="https://github.com/Tjuur">My GitHub Account</a></li>
+                <li><a href="https://github.com/Tjuur/webtech-lab-01">This Page's Repository</a></li>
+                <li><a href="https://exercism.org/">Cool Website to Practice Coding</a></li>
+            </ul>
+        </section>
 
-            </section>
+        <section id="recommendations">
+            <h2>Music recommendations</h2>
 
-            <section id="contact">
-                <h2>Contact</h2>
+            <p>A small list of music recommendations, feel free to add yours!</p>
 
-                <form id="contactForm" novalidate>
-                    <label for="contactName">Name</label>
-                    <input type="text" id="contactName" name="name" aria-describedby="nameError">
+            <label for="recommendationFilter">Filter:</label>
 
-                    <p id="nameError"></p>
+            <input
+                type="text"
+                id="recommendationFilter"
+                placeholder="Search recommendations..."
+            >
 
-                    <label for="contactEmail">Email</label>
-                    <input type="email" id="contactEmail" name="email" aria-describedby="emailError">
-                    
-                    <p id="emailError"></p>
+            <div id="recommendationList"></div>
 
-                    <label for="contactMessage">Message</label>
-                    <textarea id="contactMessage" name="message" aria-describedby="messageError"></textarea>
+            <h3>Add a recommendation</h3>
 
-                    <p id="messageError"></p>
+            <form id="recommendationForm">
+                <label for="recommendationName">Song</label>
 
-                    <button type="submit">Send Message</button>
+                <input
+                    type="text"
+                    id="recommendationName"
+                    placeholder="Enter song name"
+                >
 
-                    <p id="contactSuccess"></p>
-                </form>
-            </section>
+                <p id="recommendationNameError"></p>
 
-        </main>
+                <label for="recommendationArtistName">Artist</label>
 
-        <footer>
-            <p>Personal Website, by Cristóbal Toro, 2026</p>
-        </footer>
+                <input
+                    type="text"
+                    id="recommendationArtistName"
+                    placeholder="Enter artist name"
+                >
 
-    </body>
+                <p id="recommendationArtistError"></p>
+
+                <label for="recommendationGenre">Genre</label>
+
+                <select id="recommendationGenre">
+                    <option value="" disabled selected>Select a genre...</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Electronic">Electronic</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Jazz">Jazz</option>
+                    <option value="Country">Country</option>
+                    <option value="Hip-Hop">Hip-Hop</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <p id="recommendationGenreError"></p>
+
+                <button type="submit">Add Recommendation</button>
+            </form>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+
+            <form id="contactForm" novalidate>
+                <label for="contactName">Name</label>
+                <input type="text" id="contactName" name="name" aria-describedby="nameError">
+
+                <p id="nameError"></p>
+
+                <label for="contactEmail">Email</label>
+                <input type="email" id="contactEmail" name="email" aria-describedby="emailError">
+
+                <p id="emailError"></p>
+
+                <label for="contactMessage">Message</label>
+                <textarea id="contactMessage" name="message" aria-describedby="messageError"></textarea>
+
+                <p id="messageError"></p>
+
+                <button type="submit">Send Message</button>
+
+                <p id="contactSuccess"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Personal Website, by Cristóbal Toro, 2026</p>
+    </footer>
+</body>
 
 </html>
